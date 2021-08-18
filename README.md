@@ -5,9 +5,9 @@ This repository is the official PyTorch implementation of Mutual Affine Network 
 ([arxiv](https://arxiv.org/pdf/2108.05302.pdf), [supplementary](https://github.com/JingyunLiang/MANet/releases/tag/v0.0)).
 
  :rocket:  :rocket:  :rocket: **News**:
+  - Aug. 17, 2021: See our previous spatially invariant kernel estimation work: *[Flow-based Kernel Prior with Application to Blind Super-Resolution (FKP), CVPR2021](https://github.com/JingyunLiang/FKP).*
  - Aug. 17, 2021: See our recent work for flow-based image SR: [Hierarchical Conditional Flow: A Unified Framework for Image Super-Resolution and Image Rescaling (HCFlow), ICCV2021](https://github.com/JingyunLiang/HCFlow)
  - Aug. 17, 2021: See our recent work for real-world image SR: [Designing a Practical Degradation Model for Deep Blind Image Super-Resolution (BSRGAN), ICCV2021](https://github.com/cszn/BSRGAN)
- - Aug. 17, 2021: See our previous flow-based work: *[Flow-based Kernel Prior with Application to Blind Super-Resolution (FKP), CVPR2021](https://github.com/JingyunLiang/FKP).*
  
   ---
 
