@@ -19,7 +19,7 @@ This repository is the official PyTorch implementation of Mutual Affine Network 
 
 
 ## Requirements
-- Python 3.7, PyTorch >= 1.6, scipy>=1.6.3
+- Python 3.7, PyTorch >= 1.6, scipy >= 1.6.3
 - Requirements: opencv-python
 - Platforms: Ubuntu 16.04, cuda-10.0 & cuDNN v-7.5
 
