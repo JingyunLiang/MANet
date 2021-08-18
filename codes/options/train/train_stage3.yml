@@ -1,0 +1,98 @@
+#### general settings
+name: 001_MANet_aniso_x4_DIV2K+Flickr2K_stage3
+use_tb_logger: true
+model: blind
+distortion: sr
+scale: 4
+gpu_ids: [0]
+kernel_size: 21
+code_length: 15
+# train
+sig_min: 0.7 # 0.7, 0.525, 0.35 for x4, x3, x2
+sig_max: 10.0  # 10, 7.5, 5 for x4, x3, x2
+train_noise: False
+noise_high: 15
+train_jpeg: False
+jpeg_low: 70
+# validation
+sig: 1.6
+sig1: 6 # 6, 5, 4 for x4, x3, x2
+sig2: 1
+theta: 0
+rate_iso: 0 # 1 for iso, 0 for aniso
+test_noise: False
+noise: 15
+test_jpeg: False
+jpeg: 70
+pca_path: ./pca_matrix_aniso21_15_x4.pth
+cal_lr_psnr: False # calculate lr psnr consumes huge memory
+
+
+#### datasets
+datasets:
+  train:
+    name: DIV2K+Flickr2K
+    mode: GT
+    dataroot_GT: ../datasets/DIV2K+Flickr2K/HR
+    dataroot_LQ: ~
+
+    use_shuffle: true
+    n_workers: 8
+    batch_size: 16
+    GT_size: 192
+    LR_size: ~
+    use_flip: true
+    use_rot: true
+    color: RGB
+  val:
+    name: Set5
+    mode: GT
+    dataroot_GT: ../datasets/Set5/HR
+    dataroot_LQ: ~
+
+#### network structures
+network_G:
+  which_model_G: MANet_s3
+  in_nc: 3
+  out_nc: 3
+  nf: 64
+  nb: 10
+  gc: 32
+  manet_nf: 128
+  manet_nb: 1
+  split: 2
+
+
+#### path
+path:
+  pretrain_model_K: ../pretrained_models/stage1_MANet_x4.pth
+  pretrain_model_G: ../pretrained_models/stage2_RRDB_x4.pth
+  strict_load: false
+  resume_state: ~ #../experiments/001_MANet_aniso_x4_DIV2K_40_stage3/training_state/5000.state
+
+
+#### training settings: learning rate scheme, loss
+train:
+  lr_G: !!float 5e-5
+  lr_scheme: MultiStepLR
+  beta1: 0.9
+  beta2: 0.999
+  niter: 250000
+  warmup_iter: -1
+  lr_steps: [50000, 100000, 150000, 200000, 250000]
+  lr_gamma: 0.5
+  restarts: ~
+  restart_weights: ~
+  eta_min: !!float 1e-7
+
+  pixel_criterion: l1
+  pixel_weight: 1.0
+
+  manual_seed: 0
+  val_freq: !!float 5e3
+
+
+#### logger
+logger:
+  print_freq: 200
+  save_checkpoint_freq: !!float 5e3

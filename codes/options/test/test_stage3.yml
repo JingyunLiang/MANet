@@ -1,0 +1,68 @@
+name: 001_MANet_aniso_x4_test_stage3
+suffix: ~
+model: blind
+distortion: sr
+scale: 4
+crop_border: ~
+gpu_ids: [0]
+kernel_size: 21
+code_length: 15
+sig_min: 0
+sig_max: 0
+sig: 3.0
+sig1: 6
+sig2: 1
+theta: 0.7853981633974483
+rate_iso: 0 # 1 for iso, 0 for aniso
+sv_mode: 0 # 0 for spatially invariant kernel, 1-5 for spatially variant kernel types as in Table 2
+test_noise: False
+noise: 15
+test_jpeg: False
+jpeg: 50
+pca_path: ./pca_matrix_aniso21_15_x4.pth
+cal_lr_psnr: False # calculate lr pixel consumes huge memory
+
+
+datasets:
+  # example1: HR input only (generating LR on-the-fly)
+  test_1:
+    name: toy_dataset1
+    mode: GT
+    dataroot_GT: ../datasets/toy_dataset/HR_si
+    dataroot_LQ: ~
+
+  # example2: LR input only (no HR)
+#  test_2:
+#    name: toy_dataset2
+#    mode: LQ
+#    dataroot_GT: ~
+#    dataroot_LQ: ../datasets/toy_dataset/LR_mode0_noise0
+#    scale: 4
+#    kernel_size: 21
+
+  # example3: HR-LR pairs
+#  test_3:
+#    name: toy_dataset3
+#    mode: GTLQ
+#    dataroot_GT: ../datasets/toy_dataset/HR_si
+#    dataroot_LQ: ../datasets/toy_dataset/LR_mode0_noise0
+
+
+
+network_G:
+  which_model_G: MANet_s3
+  in_nc: 3
+  out_nc: 3
+  nf: 64
+  nb: 10
+  gc: 32
+  manet_nf: 128
+  manet_nb: 1
+  split: 2
+
+
+path:
+  strict_load: true
+  pretrain_model_G: ../experiments/pretrained_models/stage3_MANet+RRDB_x4.pth
+
+

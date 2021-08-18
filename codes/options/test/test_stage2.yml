@@ -1,0 +1,47 @@
+name: 001_MANet_aniso_x4_test_stage2
+suffix: ~
+model: blind
+distortion: sr
+scale: 4
+crop_border: ~
+gpu_ids: [0]
+kernel_size: 21
+code_length: 15
+sig_min: 0
+sig_max: 0
+sig: 3.0
+sig1: 6
+sig2: 1
+theta: 0.7853981633974483
+rate_iso: 0 # 1 for iso, 0 for aniso
+sv_mode: 0 # 0 for spatially invariant kernel, 1-5 for sv kernel as in Table 3
+test_noise: False
+noise: 15
+test_jpeg: False
+jpeg: 50
+pca_path: ./pca_matrix_aniso21_15_x4.pth
+
+
+datasets:
+  # HR input only (generating LR on-the-fly)
+  test_1:
+    name: toy_dataset1
+    mode: GT
+    dataroot_GT: ../datasets/toy_dataset/HR_si
+    dataroot_LQ: ~
+
+network_G:
+  which_model_G: MANet_s2
+  in_nc: 3
+  out_nc: 3
+  nf: 64
+  nb: 10
+  gc: 32
+  manet_nf: ~
+  manet_nb: ~
+  split: ~
+
+
+path:
+  strict_load: true
+  pretrain_model_G: ../experiments/pretrained_models/stage2_RRDB_x4.pth
