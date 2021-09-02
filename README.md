@@ -1,5 +1,5 @@
 
-# Mutual Affine Network for Spatially Variant Kernel Estimation in Blind Image Super-Resolution (MANet)
+# Mutual Affine Network for Spatially Variant Kernel Estimation in Blind Image Super-Resolution (MANet, ICCV2021)
 
 This repository is the official PyTorch implementation of Mutual Affine Network for ***Spatially Variant*** Kernel Estimation in Blind Image Super-Resolution
 ([arxiv](https://arxiv.org/pdf/2108.05302.pdf), [supplementary](https://github.com/JingyunLiang/MANet/releases/tag/v0.0)).
