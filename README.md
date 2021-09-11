@@ -110,7 +110,7 @@ python interactive_explore.py --path ../results/001_MANet_aniso_x4_test_stage1/t
 We conducted experiments on both spatially variant and invariant blind SR. Please refer to the [paper](https://arxiv.org/abs/2108.05302) and [supp](https://github.com/JingyunLiang/MANet/releases/tag/v0.0) for results. 
 
 ## Citation
-    @inproceedings{liang21manet,
+    @inproceedings{liang2021mutual,
       title={Mutual Affine Network for Spatially Variant Kernel Estimation in Blind Image Super-Resolution},
       author={Liang, Jingyun and Sun, Guolei and Zhang, Kai and Van Gool, Luc and Timofte, Radu},
       booktitle={IEEE International Conference on Computer Vision},
