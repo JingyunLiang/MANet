@@ -113,7 +113,7 @@ We conducted experiments on both spatially variant and invariant blind SR. Pleas
     @inproceedings{liang21manet,
       title={Mutual Affine Network for Spatially Variant Kernel Estimation in Blind Image Super-Resolution},
       author={Liang, Jingyun and Sun, Guolei and Zhang, Kai and Van Gool, Luc and Timofte, Radu},
-      booktitle={IEEE Conference on International Conference on Computer Vision},
+      booktitle={IEEE International Conference on Computer Vision},
       year={2021}
     }
 
