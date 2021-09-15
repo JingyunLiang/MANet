@@ -54,11 +54,14 @@ class MAConv(nn.Module):
             self.out_split.append(out_split)
 
             setattr(self, 'fc{}'.format(i), nn.Sequential(*[
-                nn.Conv2d(in_split_rest, int(in_split_rest // reduction), 1, 1, 0, True),
+                nn.Conv2d(in_channels=in_split_rest, out_channels=int(in_split_rest // reduction), 
+                          kernel_size=1, stride=1, padding=0, bias=True),
                 nn.ReLU(inplace=True),
-                nn.Conv2d(int(in_split_rest // reduction), in_split * 2, 1, 1, 0, True),
+                nn.Conv2d(in_channels=int(in_split_rest // reduction), out_channels=in_split * 2, 
+                          kernel_size=1, stride=1, padding=0, bias=True),
             ]))
-            setattr(self, 'conv{}'.format(i), nn.Conv2d(in_split, out_split, kernel_size, stride, padding, bias))
+            setattr(self, 'conv{}'.format(i), nn.Conv2d(in_channels=in_split, in_channels=out_split, 
+                                                        kernel_size=kernel_size, stride=stride, padding=padding, bias=bias))
 
     def forward(self, input):
         input = torch.split(input, self.in_split, dim=1)
