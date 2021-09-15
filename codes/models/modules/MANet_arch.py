@@ -60,7 +60,7 @@ class MAConv(nn.Module):
                 nn.Conv2d(in_channels=int(in_split_rest // reduction), out_channels=in_split * 2, 
                           kernel_size=1, stride=1, padding=0, bias=True),
             ]))
-            setattr(self, 'conv{}'.format(i), nn.Conv2d(in_channels=in_split, in_channels=out_split, 
+            setattr(self, 'conv{}'.format(i), nn.Conv2d(in_channels=in_split, out_channels=out_split, 
                                                         kernel_size=kernel_size, stride=stride, padding=padding, bias=bias))
 
     def forward(self, input):
